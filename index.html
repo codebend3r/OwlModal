@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Owl Modal</title>
+
+    <link rel="stylesheet" type="text/css" href="css/main.css"/>
+
+</head>
+<body>
+
+<div class='title-bar'>
+    <h1>Owl Modal</h1>
+</div>
+
+<div class='main-container'>
+
+    <div class='modal-container'>
+        <div class='close-button'></div>
+    </div>
+
+    <button class='open-modal-1' onclick='Modals.openModal1()'>Open Modal 1</button>
+
+    <button class='open-modal-2' onclick='Modals.openModal1()'>Open Modal 2</button>
+
+    <div class='modal-1 modal hidden'>
+        <h2>Modal 1</h2>
+        <p>Suspendisse sed ultrices diam, a laoreet nibh. Pellentesque fermentum congue elementum. Cras id iaculis metus, in congue purus. Praesent aliquam quam vitae purus volutpat, id lacinia lacus elementum. Vivamus sagittis vel mauris ac pellentesque. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nam cursus adipiscing dolor id hendrerit. Nunc sed ligula arcu. Sed ac dui porta, rutrum magna a, venenatis augue. Ut placerat, orci sit amet imperdiet facilisis, arcu orci mollis nibh, et volutpat sapien diam sed lorem. Sed egestas suscipit arcu a lacinia.</p>
+        <p>Nulla a semper felis, nec tempus lectus. Morbi in laoreet augue, et adipiscing mauris. Donec in tempus dui. Donec dictum, nulla ut dapibus sagittis, nisi nunc iaculis urna, ac semper augue lacus at tortor. Integer aliquam consectetur dui, pellentesque suscipit quam euismod quis. Duis lacinia elit ac sapien sollicitudin, ut condimentum tortor rhoncus. Sed mauris tortor, ultricies in justo sit amet, ullamcorper vestibulum elit. Proin eu semper dolor, eget gravida enim. Donec arcu odio, cursus sit amet placerat ullamcorper, faucibus sit amet nisi. Donec ultrices dapibus fringilla.</p>
+    </div>
+
+    <div class='modal-2 modal hidden'>
+        <h2>Modal 2</h2>
+        <img src='images/donvalley.jpg' />
+    </div>
+
+</div>
+
+
+<script src="js/plugins/jquery-1.9.1.js" type="text/javascript"></script>
+<script src="js/plugins/jquery.owlmodal-0.1.0.js" type="text/javascript"></script>
+<script>
+
+    var Modals = {};
+
+    Modals.openModal1 = function() {
+
+        $('.modal-container').owlmodal({
+            target: $('.modal-1')
+        });
+
+    };
+
+    Modals.openModal2 = function() {
+
+        $('.modal-container').owlmodal({
+            target: $('.modal-2')
+        });
+
+    };
+
+</script>
+
+</body>
+</html>
