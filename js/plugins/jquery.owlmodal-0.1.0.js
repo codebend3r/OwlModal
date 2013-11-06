@@ -1,12 +1,12 @@
 /*!
- * Owl Gallery
+ * Owl Modal
  * crivas.net
  *
- * Copyright (c) Chester Rivas
+ * Copyright (c) Chester Rivas 2013
  */
 
 /*
- * Owl Accordion is a simple JQuery plugin to give a menu the accordion effect when clicked
+ * Owl Modal is a simple JQuery plugin for opening up a modal with often used options such as lightbox
  *
  * Authors        Chester Rivas
  */
@@ -33,7 +33,7 @@ $.fn.owlmodal = function(options) {
         $modal;
 
     /**
-     Get a new list of images and starts cycle again
+     init plugin
 
      @method initModal
      **/
