@@ -1,4 +1,4 @@
 OwlModal
 ========
 
-a simple JQuery modal plugin
+JQuery Plugin - a modal plugin
