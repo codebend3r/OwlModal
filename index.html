@@ -12,10 +12,10 @@
 	<link rel="stylesheet" type="text/css" href="css/<!-- @echo name -->.css"/>
 	<!-- @endif -->
 	<!-- @if NODE_ENV == 'PROD' -->
-	<link rel="stylesheet" type="text/css" href="css/<!-- @echo name -->-<!-- @echo version -->.css"/>
+	<link rel="stylesheet" type="text/css" href="css/<!-- @echo outputName -->-<!-- @echo version -->.css"/>
 	<!-- @endif -->
 	<!-- @if NODE_ENV == 'RELEASE' -->
-	<link rel="stylesheet" type="text/css" href="css/<!-- @echo name -->-<!-- @echo version -->.min.css"/>
+	<link rel="stylesheet" type="text/css" href="css/<!-- @echo outputName -->-<!-- @echo version -->.min.css"/>
 	<!-- @endif -->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' >
 
@@ -110,10 +110,10 @@
 <script src="js/internal/Crivas.Init.js" type="text/javascript"></script>
 <!-- @endif -->
 <!-- @if NODE_ENV == 'PROD' -->
-<script src="js/<!-- @echo name -->-<!-- @echo version -->.js" type="text/javascript"></script>
+<script src="js/<!-- @echo outputName -->-<!-- @echo version -->.js" type="text/javascript"></script>
 <!-- @endif -->
 <!-- @if NODE_ENV == 'RELEASE' -->
-<script src="js/<!-- @echo name -->-<!-- @echo version -->.min.js" type="text/javascript"></script>
+<script src="js/<!-- @echo outputName -->-<!-- @echo version -->.min.js" type="text/javascript"></script>
 <!-- @endif -->
 
 

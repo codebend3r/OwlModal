@@ -3,7 +3,7 @@
   "name": "owlmodal",
   "version": "0.1",
   "outputFolder": "www",
-  "outputName": "owlswipe-modal",
+  "outputName": "owlmodal-website",
   "pluginName": "jquery.owlmodal",
   "pluginVersion": "0.1",
   "devDependencies": {

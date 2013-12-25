@@ -71,7 +71,7 @@ $.fn.owlmodal = function(options) {
         $modal = $('body').append($clonedTarget);
         $clonedTarget.css({
             position: 'fixed',
-            display: 'none',
+            //display: 'none',
             opacity: 0,
             zIndex: 999,
             width: modalWidth,
