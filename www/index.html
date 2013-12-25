@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Owl Modal</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=.5, maximum-scale=1, user-scalable=no"/>
+
+	<link rel="stylesheet" type="text/css" href="css/owlmodal-0.1.min.css"/>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' >
+
+</head>
+<body>
+
+<div class='title-bar-bg'>
+    <div class='title-bar'>
+        <h1>Owl Modal</h1>
+        <h2>v0.1</h2>
+        <div class='github'>
+            <a href='https://github.com/crivas/Owl Modal' target='_blank'>
+                <img src='images/logos/github.png' width='32' height='32'/>
+                <span>GitHub</span>
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class='main-container'>
+
+    <div class='download'>
+        <a href='js/jquery.owlmodal-0.1.js'>Download (Uncompressed) 6KB</a>
+    </div>
+
+    <div class='download'>
+        <a href='js/jquery.owlmodal-0.1.min.js'>Download (Minified) 4KB</a>
+    </div>
+
+    <div class='container'>
+
+	    <h4>Example #1</h4>
+	    <p></p>
+
+        <div class='open-modal-button'>CLICK ME
+        </div>
+
+        <div class='target'>
+            <p>SHOW ME</p>    
+        </div>
+
+	    <h4>HTML</h4>
+	    <pre>
+	    </pre>
+
+	    <h4>JS</h4>
+	    <pre>
+	    </pre>
+
+    <hr>
+
+    <div class='documentation'>
+
+        <h3>Plugin Options</h3>
+
+        <ul class='small-doc' data-bind='foreach: optionsList'>
+            <li>
+                <p><span class='key' data-bind='html: key'></span></p>
+                <p><span class='val'>default value: </span><span class='default-value' data-bind='html: defaultValue'></span></p>
+                <p><span class='val'>type: </span><span class='type' data-bind='html: type'></span></p>
+                <p class='description' data-bind='html: description'></p>
+            </li>
+            <hr>
+        </ul>
+
+        <h3>Events</h3>
+
+        <ul class='small-doc' data-bind='foreach: eventsList'>
+            <li>
+                <p><span class='key' data-bind='html: eventName'></span></p>
+                <p><span class='val'>event params: </span><span class='type' data-bind='html: target'></span></p>
+                <p class='description' data-bind='html: description'></p>
+            </li>
+            <hr>
+        </ul>
+
+    </div>
+
+    <p class='legal'>© 2013 Crivas Inc. All rights reserved.</p>
+
+</div>
+
+<script src="js/owlmodal-0.1.min.js" type="text/javascript"></script>
+</body>
+</html>
