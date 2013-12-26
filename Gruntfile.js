@@ -170,8 +170,11 @@ module.exports = function(grunt) {
 	        }
         },
 	    env: {
+	    	options : {
+		    	LIVE_RELOAD: false
+		    },
 		    dev: {
-			    NODE_ENV: 'DEV'
+			    NODE_ENV: 'DEV',
 		    },
 		    prod: {
 			    NODE_ENV: 'PROD'
