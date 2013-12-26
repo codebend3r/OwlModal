@@ -5,26 +5,26 @@ module.exports = function(grunt) {
         pkg: grunt.file.readJSON('package.json'),
 	    watch: {
 		    dev: {
-			    files: [ 'sass/**/*.scss', 'js/compiled/**/*.js', 'js/internal/**/*.js', 'js/vendor/**/*.js', 'index.html' ],
+			    files: [ 'sass/**/*.scss', 'js/plugins/**/*.js', 'js/compiled/**/*.js', 'js/internal/**/*.js', 'js/vendor/**/*.js', 'index.html' ],
 			    tasks: ['dev'],
 			    options: {
-				    livereload: true,
+				    livereload: '<%= pkg.port %>',
 				    atBegin: true
 			    }
 		    },
 		    prod: {
-			    files: [ 'sass/**/*.scss', 'js/compiled/**/*.js', 'js/internal/**/*.js', 'js/vendor/**/*.js', 'index.html' ],
+			    files: [ 'sass/**/*.scss', 'js/plugins/**/*.js', 'js/compiled/**/*.js', 'js/internal/**/*.js', 'js/vendor/**/*.js', 'index.html' ],
 			    tasks: ['prod'],
 			    options: {
-				    livereload: 8000,
+				    livereload: '<%= pkg.port %>',
 				    atBegin: true
 			    }
 		    },
 		    release: {
-			    files: [ 'sass/**/*.scss', 'js/compiled/**/*.js', 'js/internal/**/*.js', 'js/vendor/**/*.js', 'index.html' ],
+			    files: [ 'sass/**/*.scss', 'js/plugins/**/*.js', 'js/compiled/**/*.js', 'js/internal/**/*.js', 'js/vendor/**/*.js', 'index.html' ],
 			    tasks: ['release'],
 			    options: {
-				    livereload: 8000,
+				    livereload: '<%= pkg.port %>',
 				    atBegin: true
 			    }
 		    }
@@ -149,24 +149,22 @@ module.exports = function(grunt) {
         connect: {
             dev: {
                 options: {
-                    port: 8000,
+                    port: '<%= pkg.port %>',
                     base: '<%= pkg.outputFolder %>',
-                    livereload: false
+                    livereload: true
                 }
             },
 	        prod: {
 		        options: {
-			        port: 8000,
+			        port: '<%= pkg.port %>',
                     base: '<%= pkg.outputFolder %>',
-			        keepalive: false,
 			        livereload: true
 		        }
 	        },
 	        release: {
 		        options: {
-			        port: 8000,
+			        port: '<%= pkg.port %>',
                     base: '<%= pkg.outputFolder %>',
-			        keepalive: false,
 			        livereload: true
 		        }
 	        }
@@ -180,6 +178,9 @@ module.exports = function(grunt) {
 		    },
 		    release: {
 			    NODE_ENV: 'RELEASE'
+		    },
+		    watching: {
+		    	LIVE_RELOAD: true
 		    }
 	    },
 	    preprocess: {
@@ -190,7 +191,8 @@ module.exports = function(grunt) {
                     outputName: '<%= pkg.outputName %>',
                     version: '<%= pkg.version %>',
                     pluginName: '<%= pkg.pluginName %>',
-                    pluginVersion: '<%= pkg.pluginVersion %>'
+                    pluginVersion: '<%= pkg.pluginVersion %>',
+                    port: '<%= pkg.port %>'
                 }
             },
 		    dev: {
@@ -232,9 +234,9 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-ftp-deploy');
 
     // Default task(s).
-	grunt.registerTask('watchdev', [ 'connect:dev', 'watch:dev' ]);
-	grunt.registerTask('watchprod', [ 'connect:prod', 'watch:prod' ]);
-	grunt.registerTask('watchrelease', [ 'connect:release', 'watch:release' ]);
+	grunt.registerTask('watchdev', [ 'connect:dev', 'env:watching', 'watch:dev' ]);
+	grunt.registerTask('watchprod', [ 'connect:prod', 'env:watching', 'watch:prod' ]);
+	grunt.registerTask('watchrelease', [ 'connect:release', 'env:watching', 'watch:release' ]);
 	grunt.registerTask('dev', [ 'env:dev', 'sass', 'clean', 'copy:dev', 'preprocess:dev' ]);
 	grunt.registerTask('prod', [ 'env:prod', 'sass', 'concat', 'clean', 'copy:prod', 'preprocess:prod' ]);
     grunt.registerTask('release', [ 'env:release', 'sass', 'concat', 'uglify', 'cssmin', 'clean', 'copy:release', 'preprocess:release' ]);

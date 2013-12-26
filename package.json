@@ -5,7 +5,8 @@
   "outputFolder": "www",
   "outputName": "owlmodal-website",
   "pluginName": "jquery.owlmodal",
-  "pluginVersion": "0.1",
+  "pluginVersion": "0.2",
+  "port": "8000",
   "devDependencies": {
     "grunt": "~0.4.2",
     "grunt-contrib-jshint": "~0.6.3",

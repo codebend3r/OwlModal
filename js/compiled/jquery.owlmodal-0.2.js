@@ -13,6 +13,12 @@
 
 var Owl = Owl || {};
 
+Owl.event = Owl.event || {};
+Owl.event.OPENMODALCLICKED = "OPENMODALCLICKED";
+Owl.event.CLOSEMODALCLICKED = "CLOSEMODALCLICKED";
+Owl.event.OPENMODALCOMPLETE = "OPENMODALCOMPLETE";
+Owl.event.CLOSEMODALCOMPLETE = "CLOSEMODALCOMPLETE";
+
 $.fn.owlmodal = function(options) {
 
     var settings = $.extend({
@@ -21,8 +27,10 @@ $.fn.owlmodal = function(options) {
         modalWidth: 600,
         modalHeight: 500,
         lightBoxOn: true,
+        clickAnywhereToClose: true,
+        animationSpeed: .6,
         revealWhenClicked: [],
-        hideWhenClicked: ['body']
+        hideWhenClicked: []
     }, options);
 
     var $this = this,
@@ -31,6 +39,7 @@ $.fn.owlmodal = function(options) {
         lightBoxOn = settings.lightBoxOn,
         owlModalClassName = 'owl-modal',
         $clonedTarget,
+        $lightBox,
         $modal;
 
     /**
@@ -56,7 +65,13 @@ $.fn.owlmodal = function(options) {
 
         if (lightBoxOn && !$('#lightbox').length > 0) {
             $('body').append("<div id='lightbox'></div>");
-            $('#lightbox').css({
+            $lightBox = $('#lightbox');
+            $lightBox .css({
+                display: 'none',
+                left: 0,
+                right: 0,
+                top: 0,
+                bottom: 0,
                 position: 'fixed',
                 backgroundColor: 'rgba(0,0,0,.5)',
                 width: '100%',
@@ -66,18 +81,21 @@ $.fn.owlmodal = function(options) {
             });
         }
 
+        $('body').append("<div id='owlmodal-target'></div>");
+
         $clonedTarget = $this.clone();
         $this.remove();
-        $modal = $('body').append($clonedTarget);
-        $clonedTarget.css({
+        $('#owlmodal-target').append($clonedTarget);
+        $modal = $('#owlmodal-target');
+        $modal.css({
             position: 'fixed',
-            //display: 'none',
+            display: 'block',
             opacity: 0,
             zIndex: 999,
             width: modalWidth,
             height: modalHeight,
             margin: -( modalHeight / 2 ) + 'px 0 0' + -( modalWidth / 2 ) + 'px',
-            left: '50%',
+            left: '-500%',
             top: '50%',
         });
         
@@ -88,31 +106,58 @@ $.fn.owlmodal = function(options) {
 
     var showModal = function() {
 
-        $clonedTarget.css({
-            display: 'block',
-            opacity: 0
+        $this.trigger(Owl.event.OPENMODALCLICKED);
+
+        $modal.css({
+            left: '50%',
+            display: 'block'
         });
 
-        TweenLite.to($clonedTarget, 2, {
-            opacity: 1, ease: 'Strong.easeOut'
+        $lightBox.css({
+            display: 'block'
         });
 
-        TweenLite.to($('#lightbox'), 2, {
-            opacity: 1, ease: 'Strong.easeOut'
+        TweenLite.to($modal, settings.animationSpeed, {
+            autoAlpha: 1, ease: 'Strong.easeOut', onComplete: onOpenModalComplete
         });
 
-    }
+        TweenLite.to($lightBox, settings.animationSpeed, {
+            autoAlpha: 1, ease: 'Strong.easeOut'
+        });
+
+    };
 
     var closeModal = function() {
-        //$modal.fadeOut();
-        TweenLite.to($clonedTarget, 1, {
-            opacity: 0, ease: 'Strong.easeOut', onComplete: function(){
-                $clonedTarget.css({
-                    display: 'none',
-                });
-            }
+
+        $this.trigger(Owl.event.CLOSEMODALCLICKED);
+
+        TweenLite.to($modal, settings.animationSpeed, {
+            autoAlpha: 0, ease: 'Strong.easeOut', onComplete: onCloseModalComplete
         });
-    }
+
+        TweenLite.to($lightBox, settings.animationSpeed, {
+            autoAlpha: 0, ease: 'Strong.easeOut'
+        });
+
+        if (settings.clickAnywhereToClose) {
+            $('body').off('click');
+        }
+
+    };
+
+    var onOpenModalComplete = function() {
+        $this.trigger(Owl.event.OPENMODALCOMPLETE);
+        if (settings.clickAnywhereToClose) {
+            $('body').on('click', closeModal);
+        }
+    };
+
+    var onCloseModalComplete = function() {
+        $this.trigger(Owl.event.CLOSEMODALCOMPLETE);
+        $modal.css({
+            left: '-500%'
+        });
+    };
 
     initModal();
 
