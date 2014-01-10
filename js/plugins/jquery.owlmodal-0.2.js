@@ -1,23 +1,19 @@
 /*!
- * Owl Modal
- * crivas.net
- *
- * Copyright (c) Chester Rivas 2013
- */
-
-/*
- * Owl Modal is a simple JQuery plugin for opening up a modal with often used options such as lightbox
- *
- * Authors        Chester Rivas
+ * pluginName: OwlModal
+ * author: Chester Rivas
+ * website: crivas.net
+ * description: modal jquery plugin, includes built-in lightbox
+ * version: 0.2
+ * Copyright (c) 2014 Crivas Inc.
  */
 
 var Owl = Owl || {};
 
 Owl.event = Owl.event || {};
-Owl.event.OPENMODALCLICKED = "OPENMODALCLICKED";
-Owl.event.CLOSEMODALCLICKED = "CLOSEMODALCLICKED";
-Owl.event.OPENMODALCOMPLETE = "OPENMODALCOMPLETE";
-Owl.event.CLOSEMODALCOMPLETE = "CLOSEMODALCOMPLETE";
+Owl.event.OPENMODALCLICKED = "openmodalclicked";
+Owl.event.CLOSEMODALCLICKED = "closemodalclicked";
+Owl.event.OPENMODALCOMPLETE = "openmodalcomplete";
+Owl.event.CLOSEMODALCOMPLETE = "closemodalcomplete";
 
 $.fn.owlmodal = function(options) {
 
