@@ -50,8 +50,7 @@
 	    <h4>Example #1</h4>
 	    <p></p>
 
-        <div class='open-modal-button'>CLICK ME
-        </div>
+        <div class='open-modal-button'>CLICK ME</div>
 
         <div class='target'>
             <p>SHOW ME</p>    
@@ -59,10 +58,18 @@
 
 	    <h4>HTML</h4>
 	    <pre>
+&lt;div class='open-modal-button'&gt;CLICK ME&lt;/div&gt;
+
+&lt;div class='target'&gt;
+&nbsp;&nbsp;&lt;p&gt;SHOW ME&lt;/p&gt;
+&lt;/div&gt;
 	    </pre>
 
 	    <h4>JS</h4>
 	    <pre>
+$('.target').owlmodal({
+&nbsp;&nbsp;revealWhenClicked: ['.open-modal-button']
+});
 	    </pre>
 
     </div>
@@ -87,16 +94,22 @@
 
         <ul class='small-doc' data-bind='foreach: eventsList'>
             <li>
-                <p><span class='key' data-bind='html: eventName'></span></p>
-                <p><span class='val'>event params: </span><span class='type' data-bind='html: target'></span></p>
+                <p><span class='key' data-bind='html: eventName'></span> = <span class='key' data-bind='html: eventStringValue'></span></p>
                 <p class='description' data-bind='html: description'></p>
+	            <p data-bind='visible: eventParams.length > 0'>
+		            <span class='val'>event params: [</span>
+		                <span data-bind='foreach: eventParams'>
+			                <span class='type' data-bind='text: $data'></span>
+						</span>
+		            <span class='val'>]</span>
+	            </p>
             </li>
             <hr>
         </ul>
 
     </div>
 
-    <p class='legal'>© 2013 Crivas Inc. All rights reserved.</p>
+    <p class='legal'>© 2014 Crivas Inc. All rights reserved.</p>
 
 </div>
 

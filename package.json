@@ -1,11 +1,11 @@
 {
   "title": "OwlModal",
   "name": "owlmodal",
-  "version": "0.1",
+  "version": "1.4",
   "outputFolder": "www",
   "outputName": "owlmodal-website",
   "pluginName": "jquery.owlmodal",
-  "pluginVersion": "0.2",
+  "pluginVersion": "1.0",
   "port": "8000",
   "devDependencies": {
     "grunt": "~0.4.2",

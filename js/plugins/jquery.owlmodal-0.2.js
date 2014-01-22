@@ -3,7 +3,7 @@
  * author: Chester Rivas
  * website: crivas.net
  * description: modal jquery plugin, includes built-in lightbox
- * version: 0.2
+ * version: 1.0
  * Copyright (c) 2014 Crivas Inc.
  */
 
@@ -12,7 +12,9 @@ var Owl = Owl || {};
 Owl.event = Owl.event || {};
 Owl.event.OPENMODALCLICKED = "openmodalclicked";
 Owl.event.CLOSEMODALCLICKED = "closemodalclicked";
+Owl.event.OPENMODALSTARTED = "openmodalstarted";
 Owl.event.OPENMODALCOMPLETE = "openmodalcomplete";
+Owl.event.CLOSEMODALSTARTED = "closemodalstarted";
 Owl.event.CLOSEMODALCOMPLETE = "closemodalcomplete";
 
 $.fn.owlmodal = function(options) {
@@ -43,19 +45,19 @@ $.fn.owlmodal = function(options) {
 
      @method initModal
      **/
-    var initModal = function() {
+    $this.initModal = function() {
 
         var i;
 
         for ( i = 0; i < settings.revealWhenClicked.length; i++ ) {
             $(settings.revealWhenClicked[i]).on('click', function(){
-                showModal();
+	            $this.openModal();
             });
         }
 
         for ( i = 0; i < settings.hideWhenClicked.length; i++ ) {
             $(settings.hideWhenClicked[i]).on('click', function(){
-                closeModal();
+	            $this.closeModal();
             });
         }
 
@@ -92,7 +94,7 @@ $.fn.owlmodal = function(options) {
             height: modalHeight,
             margin: -( modalHeight / 2 ) + 'px 0 0' + -( modalWidth / 2 ) + 'px',
             left: '-500%',
-            top: '50%',
+            top: '50%'
         });
         
         $clonedTarget.addClass(owlModalClassName);
@@ -100,9 +102,10 @@ $.fn.owlmodal = function(options) {
 
     };
 
-    var showModal = function() {
+	$this.openModal = function() {
 
         $this.trigger(Owl.event.OPENMODALCLICKED);
+        $this.trigger(Owl.event.OPENMODALSTARTED);
 
         $modal.css({
             left: '50%',
@@ -114,7 +117,7 @@ $.fn.owlmodal = function(options) {
         });
 
         TweenLite.to($modal, settings.animationSpeed, {
-            autoAlpha: 1, ease: 'Strong.easeOut', onComplete: onOpenModalComplete
+            autoAlpha: 1, ease: 'Strong.easeOut', onComplete: $this.onOpenModalComplete
         });
 
         TweenLite.to($lightBox, settings.animationSpeed, {
@@ -123,12 +126,13 @@ $.fn.owlmodal = function(options) {
 
     };
 
-    var closeModal = function() {
+	$this.closeModal = function() {
 
         $this.trigger(Owl.event.CLOSEMODALCLICKED);
+		$this.trigger(Owl.event.CLOSEMODALSTARTED);
 
         TweenLite.to($modal, settings.animationSpeed, {
-            autoAlpha: 0, ease: 'Strong.easeOut', onComplete: onCloseModalComplete
+            autoAlpha: 0, ease: 'Strong.easeOut', onComplete: $this.onCloseModalComplete
         });
 
         TweenLite.to($lightBox, settings.animationSpeed, {
@@ -141,20 +145,20 @@ $.fn.owlmodal = function(options) {
 
     };
 
-    var onOpenModalComplete = function() {
+	$this.onOpenModalComplete = function() {
         $this.trigger(Owl.event.OPENMODALCOMPLETE);
         if (settings.clickAnywhereToClose) {
-            $('body').on('click', closeModal);
+            $('body').on('click', $this.closeModal);
         }
     };
 
-    var onCloseModalComplete = function() {
+	$this.onCloseModalComplete = function() {
         $this.trigger(Owl.event.CLOSEMODALCOMPLETE);
         $modal.css({
             left: '-500%'
         });
     };
 
-    initModal();
+	$this.initModal();
 
 };
