@@ -65,37 +65,37 @@ CS.documentation = {
 	events: [
 		{
 			eventName: 'Owl.event.OPENMODALCLICKED',
-			eventStringValue: 'openmodalclicked',
+            constant: 'openmodalclicked',
 			description: 'Triggered when the modal is opened.',
 			eventParams: []
 		},
 		{
 			eventName: 'Owl.event.CLOSEMODALCLICKED',
-			eventStringValue: 'closemodalclicked',
+            constant: 'closemodalclicked',
 			description: 'Triggered when the modal is closed.',
 			eventParams: []
 		},
 		{
 			eventName: 'Owl.event.OPENMODALSTARTED',
-			eventStringValue: 'openmodalstarted',
+            constant: 'openmodalstarted',
 			description: 'Triggered when the modal open animation has started.',
 			eventParams: []
 		},
 		{
 			eventName: 'Owl.event.OPENMODALCOMPLETE',
-			eventStringValue: 'openmodalcomplete',
+            constant: 'openmodalcomplete',
 			description: 'Triggered when the modal open animation has completed.',
 			eventParams: []
 		},
 		{
 			eventName: 'Owl.event.CLOSEMODALSTARTED',
-			eventStringValue: 'closemodalstarted',
+            constant: 'closemodalstarted',
 			description: 'Triggered when the modal close animation has started.',
 			eventParams: []
 		},
 		{
 			eventName: 'Owl.event.CLOSEMODALCOMPLETE',
-			eventStringValue: 'closemodalcomplete',
+            constant: 'closemodalcomplete',
 			description: 'Triggered when the modal close animation has completed.',
 			eventParams: []
 		}
