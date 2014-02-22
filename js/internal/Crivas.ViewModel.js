@@ -2,8 +2,14 @@ CS.ViewModel = function () {
 
     var self = this;
 
-    self.imagesList = ko.observable(CS.imagesList.images);
-    //self.optionsList = ko.observable(CS.documentation.options);
+    self.imagesList = ko.observable(CS.data.images);
+
+    self.randomImage = ko.computed(function(){
+        return CS.data.images[Math.ceil(Math.random() * CS.data.images.length-1)];
+    });
+
+    self.dummyText = CS.data.dummyText;
+
     self.optionsList = ko.observableArray(ko.utils.arrayMap(CS.documentation.options, function (i) {
         return {
             key: '<b>' + i.key + '</b>',

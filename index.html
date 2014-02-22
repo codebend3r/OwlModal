@@ -50,10 +50,10 @@
 	    <h4>Example #1</h4>
 	    <p></p>
 
-        <div class='open-modal-button'>CLICK ME</div>
+        <div class='open-modal-button open-modal-button-1'>CLICK ME</div>
 
-        <div class='target'>
-            <p>SHOW ME</p>    
+        <div class='target target-1'>
+            <img data-bind='attr:{src:randomImage}'/>    
         </div>
 
 	    <h4>HTML</h4>
@@ -68,9 +68,18 @@
 	    <h4>JS</h4>
 	    <pre>
 $('.target').owlmodal({
-&nbsp;&nbsp;revealWhenClicked: ['.open-modal-button']
+&nbsp;&nbsp;revealElements: ['.open-modal-button']
 });
 	    </pre>
+
+        <hr>
+
+        <div class='open-modal-button open-modal-button-2'>CLICK ME</div>
+
+        <div class='target target-2'>
+            <p data-bind='text: dummyText'></p>    
+        </div>
+
 
     </div>
 
@@ -90,7 +99,7 @@ $('.target').owlmodal({
             <hr>
         </ul>
 
-        <h3>Events</h3>
+        <h3 data-bind='visible: eventsList().length > 0'>Events</h3>
 
         <ul class='small-doc' data-bind='foreach: eventsList'>
             <li>
@@ -130,9 +139,7 @@ $('.target').owlmodal({
 <!-- @if NODE_ENV == 'RELEASE' -->
 <script src="js/<!-- @echo outputName -->-<!-- @echo version -->.min.js" type="text/javascript"></script>
 <!-- @endif -->
-<!-- @if LIVE_RELOAD == true -->
-<script src="http://localhost:<!-- @echo port -->/livereload.js"></script>
-<!-- @endif -->
+
 
 </body>
 </html>

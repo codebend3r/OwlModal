@@ -2,13 +2,6 @@
 CS.documentation = {
 
     options: [
-		{
-			key: 'closeElement',
-			defaultValue: 'null',
-			type: 'String',
-			description: 'N/A',
-			required: false
-		},
 	    {
 		    key: 'modalWidth',
 		    defaultValue: 600,
@@ -45,14 +38,14 @@ CS.documentation = {
 		    required: false
 	    },
 	    {
-		    key: 'revealWhenClicked',
+		    key: 'revealElements',
 		    defaultValue: '[]',
 		    type: 'String',
 		    description: 'N/A',
 		    required: false
 	    },
 	    {
-		    key: 'hideWhenClicked',
+		    key: 'hideElements',
 		    defaultValue: '[]',
 		    type: 'String',
 		    description: 'N/A',

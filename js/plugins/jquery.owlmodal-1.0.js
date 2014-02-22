@@ -21,14 +21,13 @@ $.fn.owlmodal = function(options) {
 
     var settings = $.extend({
         // These are the defaults.
-        closeElement: null,
         modalWidth: 600,
         modalHeight: 500,
         lightBoxOn: true,
         clickAnywhereToClose: true,
         animationSpeed: .6,
-        revealWhenClicked: [],
-        hideWhenClicked: []
+        revealElements: [],
+        hideElements: []
     }, options);
 
     var $this = this,
@@ -49,14 +48,14 @@ $.fn.owlmodal = function(options) {
 
         var i;
 
-        for ( i = 0; i < settings.revealWhenClicked.length; i++ ) {
-            $(settings.revealWhenClicked[i]).on('click', function(){
+        for ( i = 0; i < settings.revealElements.length; i++ ) {
+            $(settings.revealElements[i]).on('click', function(){
 	            $this.openModal();
             });
         }
 
-        for ( i = 0; i < settings.hideWhenClicked.length; i++ ) {
-            $(settings.hideWhenClicked[i]).on('click', function(){
+        for ( i = 0; i < settings.hideElements.length; i++ ) {
+            $(settings.hideElements[i]).on('click', function(){
 	            $this.closeModal();
             });
         }
@@ -77,12 +76,18 @@ $.fn.owlmodal = function(options) {
                 zIndex: 998,
                 opacity: 0
             });
+        } else {
+            $lightBox = $('#lightbox');
         }
 
-        $('body').append("<div id='owlmodal-target'></div>");
+        if (!$('#owlmodal-target').length > 0) $('body').append("<div id='owlmodal-target'></div>");
 
-        $clonedTarget = $this.clone();
-        $this.remove();
+    };
+
+    $this.cloneTarget = function() {
+
+        $clonedTarget = $clonedTarget || $this.clone();
+        //$this.remove();
         $('#owlmodal-target').append($clonedTarget);
         $modal = $('#owlmodal-target');
         $modal.css({
@@ -98,11 +103,12 @@ $.fn.owlmodal = function(options) {
         });
         
         $clonedTarget.addClass(owlModalClassName);
-        
 
     };
 
 	$this.openModal = function() {
+
+        $this.cloneTarget();
 
         $this.trigger(Owl.event.OPENMODALCLICKED);
         $this.trigger(Owl.event.OPENMODALSTARTED);
@@ -154,9 +160,7 @@ $.fn.owlmodal = function(options) {
 
 	$this.onCloseModalComplete = function() {
         $this.trigger(Owl.event.CLOSEMODALCOMPLETE);
-        $modal.css({
-            left: '-500%'
-        });
+        $clonedTarget.remove();
     };
 
 	$this.initModal();

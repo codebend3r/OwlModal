@@ -11,8 +11,19 @@ CS.init = function () {
 
 CS.initSwipe = function() {
 
-    $('.target').owlmodal({
-    	revealWhenClicked: ['.open-modal-button']
+    $('.target-1').owlmodal({
+    	revealElements: ['.open-modal-button-1']
     });
+
+    $('.target-2').owlmodal({
+    	revealElements: ['.open-modal-button-2']
+    });
+
+    /*
+    $('.open-modal-button-2').on('click', function(){
+    	debugger;
+    	$('.target-2').owlmodal();
+    });
+	*/
 
 };
