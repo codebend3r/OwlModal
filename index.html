@@ -50,7 +50,7 @@
 	    <h4>Example #1</h4>
 	    <p></p>
 
-        <div class='open-modal-button open-modal-button-1'>CLICK ME</div>
+        <div class='open-modal-button open-modal-button-1'>MODAL WITH IMAGE</div>
 
         <div class='target target-1'>
             <img data-bind='attr:{src:randomImage}'/>    
@@ -58,27 +58,43 @@
 
 	    <h4>HTML</h4>
 	    <pre>
-&lt;div class='open-modal-button'&gt;CLICK ME&lt;/div&gt;
+&lt;div class='open-modal-button-1'&gt;CLICK ME&lt;/div&gt;
 
-&lt;div class='target'&gt;
-&nbsp;&nbsp;&lt;p&gt;SHOW ME&lt;/p&gt;
+&lt;div class='target-1'&gt;
+&nbsp;&nbsp;&lt;img src='image.jpg' /&gt;
 &lt;/div&gt;
 	    </pre>
 
 	    <h4>JS</h4>
 	    <pre>
-$('.target').owlmodal({
-&nbsp;&nbsp;revealElements: ['.open-modal-button']
+$('.target-1').owlmodal({
+&nbsp;&nbsp;revealElements: ['.open-modal-button-1']
 });
 	    </pre>
 
         <hr>
 
-        <div class='open-modal-button open-modal-button-2'>CLICK ME</div>
+        <div class='open-modal-button open-modal-button-2'>MODAL WITH TEXT</div>
 
         <div class='target target-2'>
             <p data-bind='text: dummyText'></p>    
         </div>
+
+        <h4>HTML</h4>
+	    <pre>
+&lt;div class='open-modal-button-2'&gt;CLICK ME&lt;/div&gt;
+
+&lt;div class='target-2'&gt;
+&nbsp;&nbsp;&lt;p&gt;Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Sociis natoque penati...&lt;/p&gt;
+&lt;/div&gt;
+	    </pre>
+
+        <h4>JS</h4>
+	    <pre>
+$('.target-2').owlmodal({
+&nbsp;&nbsp;revealElements: ['.open-modal-button-2']
+});
+	    </pre>
 
 
     </div>

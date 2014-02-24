@@ -21,8 +21,21 @@
   display: none;
 }
 
+.close-button {
+  display: block;
+  position: absolute;
+  background-image: url('../images/close-small-white.png');
+  background-position: 20px 20px;
+  right: -5px;
+  top: -5px;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
 .owl-modal {
   display: block;
+  position: relative;
   background-color: $secondaryColour;
   width: 100%;
   height: 100%;

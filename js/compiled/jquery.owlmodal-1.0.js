@@ -24,9 +24,8 @@ $.fn.owlmodal = function(options) {
         modalWidth: 600,
         modalHeight: 500,
         lightBoxOn: true,
-        clickAnywhereToClose: false,
+        clickAnywhereToClose: true,
         animationSpeed: .6,
-        showCloseButton: true,
         revealElements: [],
         hideElements: []
     }, options);
@@ -37,7 +36,6 @@ $.fn.owlmodal = function(options) {
         lightBoxOn = settings.lightBoxOn,
         owlModalClassName = 'owl-modal',
         $clonedTarget,
-        $closeButton,
         $lightBox,
         $modal;
 
@@ -82,40 +80,29 @@ $.fn.owlmodal = function(options) {
             $lightBox = $('#lightbox');
         }
 
-        if (!$('#owlmodal-target').length > 0) {
-            $('body').append("<div id='owlmodal-target'></div>");
-        }
+        if (!$('#owlmodal-target').length > 0) $('body').append("<div id='owlmodal-target'></div>");
 
     };
 
     $this.cloneTarget = function() {
 
         $clonedTarget = $clonedTarget || $this.clone();
-
+        //$this.remove();
         $('#owlmodal-target').append($clonedTarget);
         $modal = $('#owlmodal-target');
         $modal.css({
             position: 'fixed',
             display: 'block',
             opacity: 0,
-            zIndex: 998,
+            zIndex: 999,
             width: modalWidth,
             height: modalHeight,
             margin: -( modalHeight / 2 ) + 'px 0 0' + -( modalWidth / 2 ) + 'px',
             left: '-500%',
             top: '50%'
         });
+        
         $clonedTarget.addClass(owlModalClassName);
-
-        if (settings.showCloseButton && !$('.close-button').length > 0) {
-            $clonedTarget.append("<div class='close-button'></div>");
-            $closeButton = $('.close-button');
-            $closeButton.css({
-                zIndex: 999
-            });
-        }
-
-        $closeButton.on('click', $this.closeModal);
 
     };
 

@@ -124,7 +124,7 @@ module.exports = function(grunt) {
 					    'js/compiled/<%= pkg.outputName %>-<%= pkg.version %>.js'
 				    ]
 			    }
-		    },
+		    },		    
             plugin: {
                 files: {
                     'js/compiled/<%= pkg.pluginName %>-<%= pkg.pluginVersion %>.min.js': [
