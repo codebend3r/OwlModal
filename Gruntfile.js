@@ -29,7 +29,7 @@ module.exports = function(grunt) {
 			    }
 		    }
 	    },
-	    clean: ["<%= pkg.outputFolder %>", "compiled" ],
+	    clean: ["<%= pkg.outputFolder %>", "js/compiled", "css/compiled" ],
 	    copy: {
 		    dev: {
 			    files: [
@@ -240,9 +240,9 @@ module.exports = function(grunt) {
 	grunt.registerTask('watchdev', [ 'connect:dev', 'env:watching', 'watch:dev' ]);
 	grunt.registerTask('watchprod', [ 'connect:prod', 'env:watching', 'watch:prod' ]);
 	grunt.registerTask('watchrelease', [ 'connect:release', 'env:watching', 'watch:release' ]);
-	grunt.registerTask('dev', [ 'env:dev', 'sass', 'clean', 'copy:dev', 'preprocess:dev' ]);
-	grunt.registerTask('prod', [ 'env:prod', 'sass', 'concat', 'clean', 'copy:prod', 'preprocess:prod' ]);
-    grunt.registerTask('release', [ 'env:release', 'sass', 'concat', 'uglify', 'cssmin', 'clean', 'copy:release', 'preprocess:release' ]);
+	grunt.registerTask('dev', [ 'env:dev', 'clean', 'sass', 'copy:dev', 'preprocess:dev' ]);
+	grunt.registerTask('prod', [ 'env:prod', 'clean', 'sass', 'concat', 'copy:prod', 'preprocess:prod' ]);
+    grunt.registerTask('release', [ 'env:release', 'clean', 'sass', 'concat', 'uglify', 'cssmin', 'copy:release', 'preprocess:release' ]);
     grunt.registerTask('deploy', [ 'ftp-deploy' ]);
     grunt.registerTask('launch', [ 'release', 'deploy' ]);
     grunt.registerTask('default', ['dev']);

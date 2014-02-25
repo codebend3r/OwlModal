@@ -25,9 +25,9 @@ CS.documentation = {
 	    },
 	    {
 		    key: 'clickAnywhereToClose',
-		    defaultValue: 'true',
+		    defaultValue: 'false',
 		    type: 'String',
-		    description: 'Whether to close the modal window by clicking outside the modal window.',
+		    description: 'Whether to close the modal window by clicking anywhere on screen.',
 		    required: false
 	    },
 	    {
@@ -37,18 +37,25 @@ CS.documentation = {
 		    description: 'The animation speed when opening and closing.',
 		    required: false
 	    },
+        {
+            key: 'showCloseButton',
+            defaultValue: 'true',
+            type: 'Boolean',
+            description: 'Whether to show the x icon in the top right corner',
+            required: false
+        },
 	    {
 		    key: 'revealElements',
 		    defaultValue: '[]',
 		    type: 'String',
-		    description: 'N/A',
+		    description: 'An array of JQuery selectors that will trigger the reveal event.',
 		    required: false
 	    },
 	    {
 		    key: 'hideElements',
 		    defaultValue: '[]',
 		    type: 'String',
-		    description: 'N/A',
+            description: 'An array of JQuery selectors that will trigger the hide event.',
 		    required: false
 	    }
 
